@@ -52,15 +52,13 @@ win_width = 1000
 win_height = 600
 config_string = "{0}x{1}".format(win_width, win_height + 32)
 root.geometry(config_string)
-fill_color = "black"
+fill_color = "blue"
 root.geometry(config_string)
 cell_size = 20
 canvas = Canvas(root, height=win_height)
 canvas.pack(fill=BOTH)
-
 field_height = int(win_height / cell_size)
 field_width = int(win_width / cell_size)
-
 cell_matrix = []
 for i in range(field_height):
     for j in range(field_width):
@@ -70,19 +68,20 @@ for i in range(field_height):
         cell_matrix.append(square)
 fict_square = canvas.create_rectangle(0, 0, 0, 0, state=HIDDEN, tags=('hid', '0'))
 cell_matrix.append(fict_square)
-
 canvas.itemconfig(cell_matrix[adres(12, 23)], state=NORMAL, tags='vis')
-canvas.itemconfig(cell_matrix[adres(14, 24)], state=NORMAL, tags='vis')
-canvas.itemconfig(cell_matrix[adres(13, 24)], state=NORMAL, tags='vis')
-canvas.itemconfig(cell_matrix[adres(13, 23)], state=NORMAL, tags='vis')
 canvas.itemconfig(cell_matrix[adres(13, 22)], state=NORMAL, tags='vis')
+canvas.itemconfig(cell_matrix[adres(13, 24)], state=NORMAL, tags='vis')
 canvas.itemconfig(cell_matrix[adres(14, 22)], state=NORMAL, tags='vis')
-
+canvas.itemconfig(cell_matrix[adres(14, 24)], state=NORMAL, tags='vis')
+canvas.itemconfig(cell_matrix[adres(15, 22)], state=NORMAL, tags='vis')
+canvas.itemconfig(cell_matrix[adres(15, 24)], state=NORMAL, tags='vis')
+canvas.itemconfig(cell_matrix[adres(16, 23)], state=NORMAL, tags='vis')
+canvas.itemconfig(cell_matrix[adres(14, 21)], state=NORMAL, tags='vis')
+canvas.itemconfig(cell_matrix[adres(14, 25)], state=NORMAL, tags='vis')
 frame = Frame(root)
 btn = Button(frame, text='Следующее поколение', command=evolution)
 btn.pack()
 frame.pack(side='bottom')
-
 canvas.bind('<B1-Motion>', draw_a)
 canvas.bind('<ButtonPress>', draw_a)
 
